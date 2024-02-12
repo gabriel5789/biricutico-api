@@ -1,7 +1,6 @@
 package com.biricutico.drink.interactor;
 
 import com.biricutico.drink.entity.Drink;
-import com.biricutico.drink.presentation.DrinkSearchPresenter;
 
 import java.util.List;
 

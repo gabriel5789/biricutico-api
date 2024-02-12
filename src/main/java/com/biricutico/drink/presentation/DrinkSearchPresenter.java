@@ -29,6 +29,8 @@ public class DrinkSearchPresenter implements DrinkSearchOutputPort {
                 drink.getDescricao()))
             .toList();
 
+        response.setData(drinkDTOList);
+
         return response;
     }
 

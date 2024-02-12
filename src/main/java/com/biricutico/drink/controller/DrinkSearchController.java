@@ -7,6 +7,7 @@ import com.biricutico.drink.interactor.DrinkSearchRequest;
 import com.biricutico.drink.interactor.DrinkSearchResponse;
 import com.biricutico.drink.interactor.DrinkSearchUseCase;
 import com.biricutico.drink.presentation.DrinkSearchPresenter;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +23,15 @@ public class DrinkSearchController {
 
     @GetMapping("/drinks")
     public DrinkSearchResponse searchDrinks(@RequestBody DrinkSearchRequest request) {
-        /* Inicialização de componentes - Seria ideal realizar isso no Main (BiricuticoApplication) futuramente */
+        return inputPort.searchDrinks(request);
+    }
+
+    @PostConstruct
+    public void init() {
+        /* Inicialização de componentes */
         if (inputPort == null) {
             inputPort = new DrinkSearchUseCase(new DrinkSearchPresenter(), new DrinkDataMapper(drinkRepository));
         }
-
-        return inputPort.searchDrinks(request);
     }
+
 }

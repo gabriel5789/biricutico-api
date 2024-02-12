@@ -7,11 +7,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Map;
 
 @EqualsAndHashCode(callSuper = true)
 public @Data class DrinkSearchResponse extends BaseResponse<List<DrinkSearchResponse.DrinkDTO>> {
-
     @AllArgsConstructor
     @NoArgsConstructor
     public static @Data class DrinkDTO {

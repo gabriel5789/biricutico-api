@@ -6,7 +6,6 @@ import com.biricutico.drink.entity.Tag;
 import com.biricutico.drink.entity.UnidadeMedida;
 import com.biricutico.drink.entity.Utensilio;
 import com.biricutico.drink.interactor.DrinkSearchDataGateway;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.LinkedList;
 import java.util.List;
