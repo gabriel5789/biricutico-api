@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface DrinkSearchOutputPort {
     DrinkSearchResponse presentResults(List<Drink> drinkSearchResponse);
+
     DrinkSearchResponse presentMissingSearchParametersError();
+
+    DrinkSearchResponse presentDataAccessError();
 }

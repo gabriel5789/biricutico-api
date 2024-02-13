@@ -5,25 +5,28 @@ import com.biricutico.drink.entity.Drink;
 import java.util.List;
 
 public class DrinkSearchUseCase implements DrinkSearchInputPort {
-    DrinkSearchOutputPort outputPort;
-    DrinkSearchDataGateway dataGateway;
+    private final DrinkSearchOutputPort outputPort;
+    private final DrinkSearchDataGateway dataGateway;
 
     @Override
     public DrinkSearchResponse searchDrinks(DrinkSearchRequest searchCriteria) {
-        /* Validate input */
+        /* Validar input */
         if (searchCriteria == null || searchCriteria.getFilterOptions() == null)
             return outputPort.presentMissingSearchParametersError();
 
         List<Drink> results = null;
 
-        /* Process filters */
         if (searchCriteria.getFilterOptions().isEmpty()) {
             return outputPort.presentResults(dataGateway.listAll());
         }
 
         for (DrinkSearchRequest.FilterOption filterOption : searchCriteria.getFilterOptions()) {
-            if (filterOption.getField().equals("nome_drink")) {
-                results = dataGateway.searchByName(filterOption.getValue());
+            if (filterOption.getField().equals("nome")) {
+                try {
+                    results = dataGateway.searchByName(filterOption.getValue());
+                } catch (DataGatewayAccessError e) {
+                    return outputPort.presentDataAccessError();
+                }
             }
         }
 

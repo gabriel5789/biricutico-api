@@ -8,7 +8,6 @@ import java.util.Optional;
 @Getter
 @Setter
 public class Tag {
-
     private String key;
     private String value;
 
@@ -20,5 +19,4 @@ public class Tag {
     public static Tag of(String key, String value) {
         return new Tag(key, value);
     }
-
 }

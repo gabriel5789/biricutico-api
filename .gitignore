@@ -62,4 +62,5 @@ buildNumber.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven
 
+src/main/resources/application.properties
 application.properties

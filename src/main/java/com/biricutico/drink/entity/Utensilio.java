@@ -8,7 +8,6 @@ import java.util.Optional;
 @Getter
 @Setter
 public class Utensilio {
-
     private String nome;
 
     private Utensilio(String nome) {
@@ -17,5 +16,7 @@ public class Utensilio {
 
     public static Utensilio of(String nome) {
         return new Utensilio(nome);
-    };
+    }
+
+    ;
 }

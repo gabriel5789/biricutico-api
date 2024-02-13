@@ -30,7 +30,7 @@ public class Drink {
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "instrucoes_preparo")
+    @Column(name = "instrucoes_preparo", length = 1024)
     private String instrucoesPreparo;
 
     @Column(name = "taca")
@@ -39,13 +39,12 @@ public class Drink {
     @Column(name = "teor_alcoolico")
     private String teorAlcoolico;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "drink", cascade = CascadeType.ALL)
     private List<Utensilio> utensilios;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "drink", cascade = CascadeType.ALL)
     private List<Ingrediente> ingredientes;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "drink", cascade = CascadeType.ALL)
     private List<Tag> tags;
-
 }

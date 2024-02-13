@@ -7,7 +7,5 @@ import java.util.List;
 
 @Repository
 public interface DrinkRepository extends JpaRepository<Drink, Integer> {
-
-    List<Drink> findByNome(String nome);
-
+    List<Drink> findByNomeContainingIgnoreCase(String nome);
 }

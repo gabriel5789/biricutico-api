@@ -1,13 +1,12 @@
 package com.biricutico.drink.database;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "UNIDADE_MEDIDA")
@@ -17,7 +16,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UnidadeMedida {
     @Id
-    @Column(name = "unidade_medida")
+    @Column(name = "unidade_medida", insertable = false)
     private String nome;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "unidadeMedida")
+    private List<Ingrediente> ingrediente;
 }

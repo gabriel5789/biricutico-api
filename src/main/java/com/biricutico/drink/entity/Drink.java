@@ -3,6 +3,7 @@ package com.biricutico.drink.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,17 +24,13 @@ public class Drink {
     private Drink(Long id, String nome, String foto, String descricao, String instrucoesPreparo, List<Utensilio> utensilios, List<Ingrediente> ingredientes, List<Tag> tags, String teorAlcoolico, String taca) {
         /* Obrigatórios */
         this.nome = Optional.ofNullable(nome).orElseThrow(InvalidDomainObjectError::new);
-
         this.instrucoesPreparo = Optional.ofNullable(instrucoesPreparo).orElseThrow(InvalidDomainObjectError::new);
-
         this.ingredientes = Optional.ofNullable(ingredientes).orElseThrow(InvalidDomainObjectError::new);
         if (this.ingredientes.isEmpty()) throw new InvalidDomainObjectError();
 
-        /* Lista pode estar vazia mas precisa existir */
-        this.utensilios = Optional.ofNullable(utensilios).orElseThrow(InvalidDomainObjectError::new);
-        this.tags = Optional.ofNullable(tags).orElseThrow(InvalidDomainObjectError::new);
-
         /* Opcionais */
+        this.utensilios = Optional.ofNullable(utensilios).orElse(new LinkedList<>());
+        this.tags = Optional.ofNullable(tags).orElse(new LinkedList<>());
         this.teorAlcoolico = teorAlcoolico;
         this.taca = taca;
         this.foto = foto;
@@ -44,9 +41,4 @@ public class Drink {
     public static Drink of(Long id, String nome, String foto, String descricao, String instrucoesPreparo, List<Utensilio> utensilios, List<Ingrediente> ingredientes, List<Tag> tags, String teorAlcoolico, String taca) throws InvalidDomainObjectError {
         return new Drink(id, nome, foto, descricao, instrucoesPreparo, utensilios, ingredientes, tags, teorAlcoolico, taca);
     }
-
-    public Boolean hasId() {
-        return (this.id == null);
-    }
-
 }
