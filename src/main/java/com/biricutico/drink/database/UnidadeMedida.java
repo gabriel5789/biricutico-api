@@ -20,5 +20,5 @@ public class UnidadeMedida {
     private String nome;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "unidadeMedida")
-    private List<Ingrediente> ingrediente;
+    private List<Ingrediente> ingredientes;
 }

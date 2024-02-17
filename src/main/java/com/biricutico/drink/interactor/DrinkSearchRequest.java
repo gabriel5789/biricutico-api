@@ -1,14 +1,18 @@
 package com.biricutico.drink.interactor;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 public @Data class DrinkSearchRequest {
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static @Data class FilterOption {
         private String field;
         private String operation;
-        private String value;
+        private Object value;
     }
 
     private String dataOption;

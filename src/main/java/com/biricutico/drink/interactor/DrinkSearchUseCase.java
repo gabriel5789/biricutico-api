@@ -23,7 +23,7 @@ public class DrinkSearchUseCase implements DrinkSearchInputPort {
         for (DrinkSearchRequest.FilterOption filterOption : searchCriteria.getFilterOptions()) {
             if (filterOption.getField().equals("nome")) {
                 try {
-                    results = dataGateway.searchByName(filterOption.getValue());
+                    results = dataGateway.searchByName(String.valueOf(filterOption.getValue()));
                 } catch (DataGatewayAccessError e) {
                     return outputPort.presentDataAccessError();
                 }
