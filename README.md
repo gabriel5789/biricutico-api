@@ -7,3 +7,5 @@ Sistema de criação e gerenciamento de cardápios para bartenders
   <li><code>cd target</code></li>
   <li><code>java -jar biricutico-0.0.1-SNAPSHOT.jar</code></li>
 </ol>
+
+ℹ️: Importante: A variável de ambiente JAVA_HOME deve apontar para uma JDK versão de 21 ou maior
